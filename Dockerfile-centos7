@@ -1,0 +1,21 @@
+# download stage
+FROM centos:7 AS fetcher
+
+RUN yum update -y
+RUN yum install -y wget sudo
+
+WORKDIR /
+
+ADD https://ether1.org/scripts/rpm/setup.sh /
+RUN chmod +x setup.sh
+RUN ./setup.sh
+
+# final stage
+FROM centos:7
+
+RUN yum update -y
+
+COPY --from=fetcher /usr/sbin/geth /usr/sbin/geth-ether1
+
+CMD [ "/usr/sbin/geth-ether1", "--syncmode=fast", "--cache=512" ]
+EXPOSE 30305 30305
