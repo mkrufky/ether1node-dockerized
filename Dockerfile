@@ -20,4 +20,4 @@ RUN apt-get dist-upgrade -y
 COPY --from=fetcher /usr/sbin/geth /usr/sbin/geth-ether1
 
 CMD [ "/usr/sbin/geth-ether1", "--syncmode=fast", "--cache=512" ]
-EXPOSE 30305 30305
+EXPOSE 30305 30305/udp
