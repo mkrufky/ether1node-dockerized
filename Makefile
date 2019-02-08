@@ -10,5 +10,11 @@ build: env
 daemon: build
 	@docker run -p 30305:30305 -p 30305:30305/udp --mount source=ether1node,target=/root ether1node:${GIT_REF}
 
+node: daemon
+
 interactive: build
 	@docker run -i --mount source=ether1node,target=/root ether1node:${GIT_REF} geth-ether1 attach
+
+attach: interactive
+
+console: interactive

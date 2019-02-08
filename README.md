@@ -11,14 +11,14 @@ To simplify things, basic operations have been added as `Makefile` commands.
 make image
 ```
 
-## To run the node (non-interactive):
+## To run the node / daemon (non-interactive):
 ```
-make daemon
+make node
 ```
 
 ## To access the running node interactively with the geth console:
 ```
-make interactive
+make attach
 ```
 
 ## To run as a systemd service:
@@ -38,7 +38,7 @@ Type=simple
 Restart=always
 RestartSec=30s
 WorkingDirectory=/home/ether1node/ether1node-dockerized
-ExecStart=/usr/bin/make daemon
+ExecStart=/usr/bin/make node
 
 [Install]
 WantedBy=default.target
