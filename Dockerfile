@@ -16,7 +16,8 @@ ARG SHA256SUM
 RUN echo ${SHA256SUM} ${ZIPFILE} > ${ZIPFILE}.sha256sum && \
     wget -nv ${URL} && \
     sha256sum -c ${ZIPFILE}.sha256sum && \
-    tar -zxvf ${ZIPFILE}
+    tar -zxvf ${ZIPFILE} && \
+    chmod 755 geth
 
 # final stage
 FROM debian:latest
