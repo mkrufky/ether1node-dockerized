@@ -1,5 +1,5 @@
 # download stage
-FROM debian:latest AS fetcher
+FROM debian:sid-slim AS fetcher
 
 RUN apt-get update -y && \
     apt-get dist-upgrade -y
@@ -20,7 +20,7 @@ RUN echo ${SHA256SUM} ${ZIPFILE} > ${ZIPFILE}.sha256sum && \
     chmod 755 geth
 
 # final stage
-FROM debian:latest
+FROM debian:sid-slim
 
 RUN apt-get update -y && \
     apt-get dist-upgrade -y
